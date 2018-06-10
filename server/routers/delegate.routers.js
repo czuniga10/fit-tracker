@@ -1,5 +1,4 @@
-const userRouter = require('./user.router')
-
+const userRouter = require('./user.router');
 
 function delegateRoutes(app) {
     app.use('/api/user', userRouter);

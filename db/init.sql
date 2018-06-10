@@ -46,6 +46,7 @@ CREATE TABLE lift (
 
 CREATE TABLE week (
     id SERIAL PRIMARY KEY,
+    user_id int references users(id),
     day_id int references day(id),
     focus_id int references focus(id),
     lift_id int references lift(id)
