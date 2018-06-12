@@ -21,9 +21,9 @@ CREATE TABLE users (
 
 CREATE TABLE project (
     id SERIAL PRIMARY KEY,
+    user_id int references users(id),
     name TEXT,
     details TEXT
-    -- date TEXT
 );
 
 CREATE TABLE day (
@@ -46,6 +46,7 @@ CREATE TABLE lift (
 
 CREATE TABLE week (
     id SERIAL PRIMARY KEY,
+    project_id int references project(id),
     user_id int references users(id),
     day_id int references day(id),
     focus_id int references focus(id),
@@ -78,15 +79,25 @@ VALUES
 
 -- --Projects
 
--- INSERT INTO projects (user_id, name, date)
--- VALUES
---     (1, 'Full Stack Software Engineers', '4/18/2018'),
---     (1, 'Front End Software Engineers', '4/20/2018'),
---     (1, 'Back End Software Engineers', '4/28/2018'),
---     (1, 'Site Reliablility Engineers', '5/1/2018'),
---     (1, 'Data Scientists', '5/1/2018')
+INSERT INTO project (user_id, name, details)
+VALUES
+    (1, 'Week 1', 'Easy Week'),
+    (1, 'Week 2', 'Little Harder Week'),
+    (1, 'Week 3', 'Cardio Week'),
+    (1, 'Week 4', 'PR Week'),
+    (1, 'Week 5', 'Hell Week'),
+    (2, 'Week 1', 'Easy Week'),
+    (2, 'Week 2', 'Little Harder Week'),
+    (2, 'Week 3', 'Cardio Week'),
+    (2, 'Week 4', 'PR Week'),
+    (2, 'Week 5', 'Hell Week'),
+    (3, 'Week 1', 'Easy Week'),
+    (3, 'Week 2', 'Little Harder Week'),
+    (3, 'Week 3', 'Cardio Week'),
+    (3, 'Week 4', 'PR Week'),
+    (3, 'Week 5', 'Hell Week')
 
--- ;
+;
 
 -- --Day
 INSERT INTO day (day)
@@ -100,13 +111,51 @@ VALUES
     ('Sunday')
 ;
 
--- INSERT INTO focus (focus)
--- VALUES
---     ('Chest'),
---     ('Triceps'),
---     ('Back'),
---     ('Biceps'),
---     ('Legs'),
---     ('Shoulders'),
---     ('Cardio')
--- ;
+INSERT INTO focus (focus)
+VALUES
+    ('Chest'),
+    ('Triceps'),
+    ('Back'),
+    ('Biceps'),
+    ('Legs'),
+    ('Shoulders'),
+    ('Cardio')
+;
+
+INSERT INTO lift (lift, reps, weight, is_completed)
+VALUES
+    ('Bench', '3X10', '200', false),
+    ('DB Bench', '3X10', '75', false),
+    ('Flys', '3X10', '100', false),
+    ('Cable Pull-downs', '3x10', '50', false),
+    ('Dips', '3xfailure', 'BW', false),
+    ('Scull Crushers', '3X10', '60', false),
+    ('Push-Ups', '3XFailure', 'BW', false),
+
+    ('Cable Pulls', '3X10', '100', false),
+    ('DB Rows', '3X10', '50', false),
+    ('Back Flys', '3X10', '80', false),
+    ('DB Curls', '3x10', '35', false),
+    ('Reverse Grip Barbell Curls', '3x10', '50', false),
+    ('Cable Curls', '3X10', '55', false),
+    ('Pull-ups', '3XFailure', 'BW', false)
+;
+
+INSERT INTO week (project_id, user_id, day_id, focus_id, lift_id)
+VALUES
+    (1,1,1,1,1),
+    (1,1,1,1,2),
+    (1,1,1,1,3),
+    (1,1,1,2,4),
+    (1,1,1,2,5),
+    (1,1,1,2,6),
+    (1,1,1,1,7),
+
+    (1,1,2,3,8),
+    (1,1,2,3,9),
+    (1,1,2,3,10),
+    (1,1,2,4,11),
+    (1,1,2,4,12),
+    (1,1,2,4,13),
+    (1,1,2,3,14)
+;
