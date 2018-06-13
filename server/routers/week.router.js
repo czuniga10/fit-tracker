@@ -3,20 +3,30 @@ const getDb = require('../database/bootstrap.database');
 
 const weekRouter = express.Router();
 //test works
-weekRouter.get('/:id', (req, res) => {
-    const id = req.params.id;
+weekRouter.get('/:projectId', (req, res) => {
+    const id = req.params.projectId;
     const db = getDb();
-    db.READ.get_weeks( [id] )
-        .then( projects => res.status(200).send(projects))
+    db.READ.get_week( [id] )
+        .then( week => res.status(200).send(week))
         .catch( err => res.status(500).send(err))
 });
 //test works
-weekRouter.get('/:id/:projectId', (req, res) => {
-    const id = req.params.id;
-    const projectId = req.params.projectId
+weekRouter.get('/:projectId/:dayId', (req, res) => {
+    const id = req.params.projectId;
+    const dayId = req.params.dayId
     const db = getDb();
-    db.READ.get_user_project( [id, projectId] )
-        .then( project => res.status(200).send(project))
+    db.READ.get_week_by_day( [id, dayId] )
+        .then( day => res.status(200).send(day))
+        .catch( err => res.status(500).send(err))
+});
+
+weekRouter.get('/:projectId/:dayId/:focusId', (req, res) => {
+    const id = req.params.projectId;
+    const dayId = req.params.dayId;
+    const focusId = req.params.focusId;
+    const db = getDb();
+    db.READ.get_week_by_focus( [id, dayId, focusId] )
+        .then( focus => res.status(200).send(focus))
         .catch( err => res.status(500).send(err))
 });
 //test works

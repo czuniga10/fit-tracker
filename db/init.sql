@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS
     project,
     day,
     focus,
-    lift,
     week;
 
 --Please keep the order of the CREATE TABLE inserts the same
@@ -36,21 +35,15 @@ CREATE TABLE focus (
     focus TEXT
 );
 
-CREATE TABLE lift (
+CREATE TABLE week (
     id SERIAL PRIMARY KEY,
+    project_id int references project(id),
+    day_id int references day(id),
+    focus_id int references focus(id),
     lift TEXT,
     reps TEXT,
     weight TEXT,
     is_completed BOOLEAN
-);
-
-CREATE TABLE week (
-    id SERIAL PRIMARY KEY,
-    project_id int references project(id),
-    user_id int references users(id),
-    day_id int references day(id),
-    focus_id int references focus(id),
-    lift_id int references lift(id)
 );
 
 
@@ -122,40 +115,21 @@ VALUES
     ('Cardio')
 ;
 
-INSERT INTO lift (lift, reps, weight, is_completed)
+INSERT INTO week (project_id, day_id, focus_id, lift, reps, weight, is_completed)
 VALUES
-    ('Bench', '3X10', '200', false),
-    ('DB Bench', '3X10', '75', false),
-    ('Flys', '3X10', '100', false),
-    ('Cable Pull-downs', '3x10', '50', false),
-    ('Dips', '3xfailure', 'BW', false),
-    ('Scull Crushers', '3X10', '60', false),
-    ('Push-Ups', '3XFailure', 'BW', false),
+    (1,1,1,'Bench', '3X10', '200', false),
+    (1,1,1,'DB Bench', '3X10', '75', false),
+    (1,1,1,'Flys', '3X10', '100', false),
+    (1,1,2,'Cable Pull-downs', '3x10', '50', false),
+    (1,1,2,'Dips', '3xfailure', 'BW', false),
+    (1,1,2,'Scull Crushers', '3X10', '60', false),
+    (1,1,1,'Push-Ups', '3XFailure', 'BW', false),
 
-    ('Cable Pulls', '3X10', '100', false),
-    ('DB Rows', '3X10', '50', false),
-    ('Back Flys', '3X10', '80', false),
-    ('DB Curls', '3x10', '35', false),
-    ('Reverse Grip Barbell Curls', '3x10', '50', false),
-    ('Cable Curls', '3X10', '55', false),
-    ('Pull-ups', '3XFailure', 'BW', false)
-;
-
-INSERT INTO week (project_id, user_id, day_id, focus_id, lift_id)
-VALUES
-    (1,1,1,1,1),
-    (1,1,1,1,2),
-    (1,1,1,1,3),
-    (1,1,1,2,4),
-    (1,1,1,2,5),
-    (1,1,1,2,6),
-    (1,1,1,1,7),
-
-    (1,1,2,3,8),
-    (1,1,2,3,9),
-    (1,1,2,3,10),
-    (1,1,2,4,11),
-    (1,1,2,4,12),
-    (1,1,2,4,13),
-    (1,1,2,3,14)
-;
+    (1,2,3,'Cable Pulls', '3X10', '100', false),
+    (1,2,3,'DB Rows', '3X10', '50', false),
+    (1,2,3,'Back Flys', '3X10', '80', false),
+    (1,2,4,'DB Curls', '3x10', '35', false),
+    (1,2,4,'Reverse Grip Barbell Curls', '3x10', '50', false),
+    (1,2,4,'Cable Curls', '3X10', '55', false),
+    (1,2,3,'Pull-ups', '3XFailure', 'BW', false)
+    ;
