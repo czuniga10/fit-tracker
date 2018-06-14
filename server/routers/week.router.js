@@ -30,33 +30,35 @@ weekRouter.get('/:projectId/:dayId/:focusId', (req, res) => {
         .catch( err => res.status(500).send(err))
 });
 //test works
-weekRouter.post('/create', (req, res) => {
+weekRouter.post('/:projectId/:dayId/:focusId/create', (req, res) => {
+    const id = req.params.projectId;
+    const dayId = req.params.dayId;
+    const focusId = req.params.focusId;
     const db = getDb();
-    const { user_id, name, date } = req.body;
-    db.CREATE.create_project([ user_id, name, date ])
+    const { lift, reps, weight, is_completed } = req.body;
+    db.CREATE.create_lift([ id, dayId, focusId, lift, reps, weight, is_completed ])
         .then( (promise) => res.status(200).send(promise) )
         .catch( err => res.status(500).send(err) )
 });
 //test works
-weekRouter.put('/update/:id', (req, res) => {
+weekRouter.put('/:projectId/:dayId/:focusId/update/:liftId', (req, res) => {
+    const liftId = req.params.liftId;
+    const id = req.params.projectId;
+    const dayId = req.params.dayId;
+    const focusId = req.params.focusId;
     const db = getDb();
-    const id = req.params.id;
-    const { user_id, name, date } = req.body;
-    db.UPDATE.update_project([ id, user_id, name, date ])
+    const { lift, reps, weight, is_completed } = req.body;
+    db.UPDATE.update_lift([ liftId, id, dayId, focusId, lift, reps, weight, is_completed ])
         .then( promise => res.status(200).send(promise))
         .catch( err => res.status(500).send(err) )
 });
-//NOT WORKING YET
-//need to set all associated li_profiles to user 1 = me
-weekRouter.put('/delete/:id', (req, res) => {
-    const db = getDb();
+//test works
+weekRouter.delete('/delete/:id', (req, res) => {
     const id = req.params.id;
-    db.DELETE.delete_cards(id)
+    const db = getDb();
+    db.DELETE.delete_lift(id)
         .then ( () => res.status(200).send() )
         .catch( err => res.status(500).send(err) )
-        return db.DELETE.delete_project(id)
-            .then ( () => res.status(200).send() )
-            .catch( err => res.status(500).send(err) )
 });
 
 module.exports = weekRouter;
