@@ -66,8 +66,6 @@ VALUES
     ('username123', 'Noah', 'Lee', 'nlee@thumbtack.com', 'password1'),
     ('username123', 'Sabrina', 'Parry', 'sparry@thumbtack.com', 'password1'),
     ('username123', 'Joe', 'Mero', 'jmero@thumbtack.com', 'password1')
-
-
 ;
 
 -- --Projects
@@ -104,6 +102,7 @@ VALUES
     ('Sunday')
 ;
 
+-- Focus
 INSERT INTO focus (focus)
 VALUES
     ('Chest'),
@@ -115,6 +114,7 @@ VALUES
     ('Cardio')
 ;
 
+--Week
 INSERT INTO week (project_id, day_id, focus_id, lift, reps, weight, is_completed)
 VALUES
     (1,1,1,'Bench', '3X10', '200', false),
