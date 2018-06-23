@@ -1,21 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './App.css';
 
+import Projects from './components/Projects/Projects';
+
+import { findUserInfo } from './services/user.services';
+
+import { updateUser } from './actions/actionCreators'
+
+
+//temporary, used for testing, when user logs in, user info will be provided by user/authO
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+  constructor(props) {
+    super(props)
+    this.state={
+      loading: true
+    }
   }
+
+  componentDidMount(){
+    findUserInfo(1)
+      .then( res => {
+        console.log(res.data[0]);
+        let newUserInfo = res.data[0];
+        this.props.updateUser(newUserInfo)
+        this.setState({loading: false})
+        ;
+      })
+  }
+
+    render() {
+      const {loading} = this.state;
+      return (
+        !loading && 
+        <div className="App">
+          <Route exact path='/' component={Projects} />
+          {/* <Route path='/swiper/:id' component={Swiper} /> */}
+        </div>
+      );
+    }
+  }
+
+function mapStateToProps(state){
+  return state;
 }
 
-export default App;
+export default withRouter( connect( mapStateToProps, {updateUser} ) (App) );

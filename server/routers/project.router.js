@@ -36,16 +36,13 @@ projectRouter.put('/update/:id', (req, res) => {
         .then( promise => res.status(200).send(promise))
         .catch( err => res.status(500).send(err) )
 });
-//test doesnt work yet
+//test works
 projectRouter.delete('/delete/:id', (req, res) => {
     const db = getDb();
     const id = req.params.id;
     db.DELETE.delete_project(id)
         .then ( () => res.status(200).send() )
         .catch( err => res.status(500).send(err) )
-        return db.DELETE.delete_project(id)
-            .then ( () => res.status(200).send() )
-            .catch( err => res.status(500).send(err) )
 });
 
 module.exports = projectRouter;
