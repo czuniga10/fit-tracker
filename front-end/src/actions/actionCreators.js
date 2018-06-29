@@ -1,7 +1,7 @@
 // export const UPDATE_AUTH = "UPDATE_AUTH";
 export const UPDATE_USER = "UPDATE_USER";
-export const UPDATE_PROJECT = "UPDATE_PROJECT"
-// export const UPDATE_ORDER = "UPDATE_ORDER";
+export const UPDATE_PROJECT = "UPDATE_PROJECT";
+export const UPDATE_LIFT = "UPDATE_LIFT";
 // export const ADD_TO_CART = "ADD_TO_CART";
 // export const GET_CARD = "GET_CARD";
 // export const EMPTY_CART = "EMPTY_CART";
@@ -28,12 +28,12 @@ export function updateProject(project){
     }
 }
 
-// export function updateOrder(order){
-//     return {
-//         type: UPDATE_ORDER,
-//         payload: order
-//     }
-// }
+export function updateLift(lift){
+    return {
+        type: UPDATE_LIFT,
+        payload: lift
+    }
+}
 
 // export function addToCart(product){
 //     return {
