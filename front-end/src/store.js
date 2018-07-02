@@ -1,10 +1,13 @@
 import { createStore, combineReducers } from 'redux';
 import projectInfo from './reducer/projectInfo.reducer';
 import userInfo from './reducer/userInfo.reducer';
+import liftInfo from './reducer/liftInfo.reducer';
+
 
 let rootReducer = combineReducers({
     projectInfo,
-    userInfo
+    userInfo,
+    liftInfo
 })
 
 
