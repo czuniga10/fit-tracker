@@ -37,7 +37,7 @@ function updateLift(projectid, dayid, focusid, liftid, body){
         .catch( err => {throw err})
 }
 
-function deleteProject(liftid){
+function deleteLift(liftid){
     return axios
         .post(`${baseURL}/delete/${liftid}`)
         .then( res => res)
