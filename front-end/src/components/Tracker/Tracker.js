@@ -62,8 +62,7 @@ class Tracker extends Component {
                     </div>
                 </div>
 
-                <div className="verticle-line">
-                </div>
+
 
                 <div className="day-wrapper">
                 
@@ -72,7 +71,7 @@ class Tracker extends Component {
                             Week 1
                         </div>
                     </div>
-                    
+
                 </div>
             </div> 
         

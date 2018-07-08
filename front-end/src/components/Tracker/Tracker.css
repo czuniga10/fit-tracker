@@ -8,21 +8,18 @@
     display: flex;
     justify-content: flex-start;
     widows: 40%;
-    height: 100vh;
-    padding-top: 30%;
+    height: 34vh;
+    margin-top: 30%;
     padding-left: 20%;
     align-content: flex-end;
+    border-right: 1px solid black;
+    padding-top: 20px;
 }
 .week-days {
     padding-right: 20px;
     
 }
-.verticle-line {
-    border-left: 1px solid black;
-    height: 350px;
-    width: 1px;
-    margin-top: 29%;
-}
+
 .days {
     display: flex;
     padding-bottom: 10px;
