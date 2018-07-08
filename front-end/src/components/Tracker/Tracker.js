@@ -49,11 +49,31 @@ class Tracker extends Component {
         // })
         
         return(
-            <div className="proj-wrapper">
-                <div className="proj-title">
-                    Week 1
+            <div className="tracker-wrapper">
+                <div className="week-wrapper">
+                    <div className="week-days">
+                        <p className="days">Monday</p>
+                        <p className="days">Tuesday</p>
+                        <p className="days">Wednesday</p>
+                        <p className="days">Thursday</p>
+                        <p className="days">Friday</p>
+                        <p className="days">Saturday</p>
+                        <p className="days">Sunday</p>                        
+                    </div>
                 </div>
-                    {/* {displayProjectItems} */}
+
+                <div className="verticle-line">
+                </div>
+
+                <div className="day-wrapper">
+                
+                    <div className="lift-wrapper">
+                        <div className="lift-title">
+                            Week 1
+                        </div>
+                    </div>
+                    
+                </div>
             </div> 
         
         
