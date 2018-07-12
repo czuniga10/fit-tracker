@@ -70,6 +70,8 @@ class Tracker extends Component {
                         <div className="lift-title">
                             Week 1
                         </div>
+                        <div className="focus-wrapper">
+                        </div>
                     </div>
 
                 </div>
