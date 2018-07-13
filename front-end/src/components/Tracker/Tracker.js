@@ -11,7 +11,7 @@ class Tracker extends Component {
     constructor(props) {
         super(props)
         this.state = {
-                
+                days: []
         }
 
     // this.handleYupClick = this.handleYupClick.bind(this);
@@ -71,7 +71,32 @@ class Tracker extends Component {
                             Week 1
                         </div>
                         <div className="focus-wrapper">
+                            <div className="focus-title-wrapper">
+                                <div className="focus-title">Title</div>
+                            </div>
+
+                            <div className="focus-border">
+                            </div>
+
+                            
+
                         </div>
+
+
+                        <div className="focus-wrapper">
+                            <div className="focus-title-wrapper">
+                                <div className="focus-title">Title</div>
+                            </div>
+
+                            <div className="focus-border">
+                            </div>
+
+                            
+
+                        </div>
+
+
+
                     </div>
 
                 </div>
