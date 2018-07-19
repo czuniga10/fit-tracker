@@ -67,33 +67,63 @@ class Tracker extends Component {
                 <div className="day-wrapper">
                 
                     <div className="lift-wrapper">
-                        <div className="lift-title">
-                            Week 1
-                        </div>
+                        <div className="lift-title">Week 1</div>
                         <div className="focus-wrapper">
-                            <div className="focus-title-wrapper">
-                                <div className="focus-title">Title</div>
-                            </div>
 
                             <div className="focus-border">
+                                <div className="focus-title">Chest</div>
+
+                                <div className="focus-inner-wrapper">
+                                    <div className="lift">Bench</div>
+                                    <div className="reps">3X10</div>
+                                    <input value="220lb" className="weight"></input>
+                                    <input type="checkbox" className="completed" checked="unchecked"></input>
+                                    
+                                </div>
+
+                                <div className="focus-inner-wrapper">
+                                    <div className="lift">Bench</div>
+                                    <div className="reps">3X10</div>
+                                    <input value="220lb" className="weight"></input>
+                                    <input type="checkbox" className="completed" ></input>                                    
+                                </div>
+                                <div className="focus-inner-wrapper">
+                                    <div className="lift">Bench</div>
+                                    <div className="reps">3X10</div>
+                                    <input value="220lb" className="weight"></input>
+                                    <input type="checkbox" className="completed" ></input>                                    
+                                </div>
+                                <div className="focus-inner-wrapper">
+                                    <div className="lift">Bench</div>
+                                    <div className="reps">3X10</div>
+                                    <input value="220lb" className="weight"></input>
+                                    <input type="checkbox" className="completed" ></input>                                    
+                                </div>
+                                <div className="focus-inner-wrapper">
+                                    <div className="lift">Bench</div>
+                                    <div className="reps">3X10</div>
+                                    <input value="220lb" className="weight"></input>
+                                    <input type="checkbox" className="completed" ></input>                                    
+                                </div>
+                                <div className="focus-inner-wrapper">
+                                    <div className="lift">Bench</div>
+                                    <div className="reps">3X10</div>
+                                    <input value="220lb" className="weight"></input>
+                                    <input type="checkbox" className="completed" ></input>                                    
+                                </div>
+                                <div className="focus-inner-wrapper">
+                                    <div className="lift">Bench</div>
+                                    <div className="reps">3X10</div>
+                                    <input value="220lb" className="weight"></input>
+                                    <input type="checkbox" className="completed"></input>                                    
+                                </div>
+
                             </div>
 
                             
 
                         </div>
 
-
-                        <div className="focus-wrapper">
-                            <div className="focus-title-wrapper">
-                                <div className="focus-title">Title</div>
-                            </div>
-
-                            <div className="focus-border">
-                            </div>
-
-                            
-
-                        </div>
 
 
 
