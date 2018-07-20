@@ -75,7 +75,7 @@ class Tracker extends Component {
 
                                 <div className="focus-inner-wrapper">
                                     <div className="lift">Bench</div>
-                                    <div className="reps">3X10</div>
+                                    <div className="reps">3x10</div>
                                     <input value="220lb" className="weight"></input>
                                     <input type="checkbox" className="completed" checked="unchecked"></input>
                                     
@@ -83,37 +83,37 @@ class Tracker extends Component {
 
                                 <div className="focus-inner-wrapper">
                                     <div className="lift">Bench</div>
-                                    <div className="reps">3X10</div>
+                                    <div className="reps">3x10</div>
                                     <input value="220lb" className="weight"></input>
                                     <input type="checkbox" className="completed" ></input>                                    
                                 </div>
                                 <div className="focus-inner-wrapper">
                                     <div className="lift">Bench</div>
-                                    <div className="reps">3X10</div>
+                                    <div className="reps">3x10</div>
                                     <input value="220lb" className="weight"></input>
                                     <input type="checkbox" className="completed" ></input>                                    
                                 </div>
                                 <div className="focus-inner-wrapper">
                                     <div className="lift">Bench</div>
-                                    <div className="reps">3X10</div>
+                                    <div className="reps">3x10</div>
                                     <input value="220lb" className="weight"></input>
                                     <input type="checkbox" className="completed" ></input>                                    
                                 </div>
                                 <div className="focus-inner-wrapper">
                                     <div className="lift">Bench</div>
-                                    <div className="reps">3X10</div>
+                                    <div className="reps">3x10</div>
                                     <input value="220lb" className="weight"></input>
                                     <input type="checkbox" className="completed" ></input>                                    
                                 </div>
                                 <div className="focus-inner-wrapper">
                                     <div className="lift">Bench</div>
-                                    <div className="reps">3X10</div>
+                                    <div className="reps">3x10</div>
                                     <input value="220lb" className="weight"></input>
                                     <input type="checkbox" className="completed" ></input>                                    
                                 </div>
                                 <div className="focus-inner-wrapper">
                                     <div className="lift">Bench</div>
-                                    <div className="reps">3X10</div>
+                                    <div className="reps">3x10</div>
                                     <input value="220lb" className="weight"></input>
                                     <input type="checkbox" className="completed"></input>                                    
                                 </div>
