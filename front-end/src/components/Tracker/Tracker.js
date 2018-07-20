@@ -103,22 +103,18 @@ class Tracker extends Component {
                                     <div className="lift">Bench</div>
                                     <div className="reps">3x10</div>
                                     <input value="220lb" className="weight"></input>
-                                    <input type="checkbox" className="completed" ></input>                                    
+                                    <input type="checkbox" className="completed" ></input>                                  
                                 </div>
                                 <div className="focus-inner-wrapper">
-                                    <div className="lift">Bench</div>
-                                    <div className="reps">3x10</div>
-                                    <input value="220lb" className="weight"></input>
-                                    <input type="checkbox" className="completed" ></input>                                    
-                                </div>
-                                <div className="focus-inner-wrapper">
-                                    <div className="lift">Bench</div>
-                                    <div className="reps">3x10</div>
-                                    <input value="220lb" className="weight"></input>
-                                    <input type="checkbox" className="completed"></input>                                    
+                                       + add lift                                   
                                 </div>
 
                             </div>
+                                <div className="focus-border">
+                                    <div className="add-focus">
+                                    + add new muscle group focus
+                                    </div>
+                                </div>
 
                             
 
