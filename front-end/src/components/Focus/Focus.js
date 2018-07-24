@@ -97,7 +97,10 @@ class Focus extends Component {
                                     <input value="220lb" className="weight"></input>
                                     <input type="checkbox" className="completed" ></input>                                  
                                 </div> */}
-                                <div className="focus-inner-wrapper">
+
+
+
+                                {/* <div className="focus-inner-wrapper">
                                        + add lift                                   
                                 </div>
 
@@ -106,7 +109,7 @@ class Focus extends Component {
                                     <div className="add-focus">
                                     + add new muscle group focus
                                     </div>
-                                </div>
+                                </div> */}
 
                             
 
