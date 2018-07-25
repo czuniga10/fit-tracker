@@ -99,13 +99,13 @@ class Focus extends Component {
                                 </div> */}
 
 
-
-                                {/* <div className="focus-inner-wrapper">
+{/* 
+                                <div className="focus-inner-wrapper">
                                        + add lift                                   
-                                </div>
+                                </div> */}
 
                             </div>
-                                <div className="focus-border">
+                                {/* <div className="focus-border">
                                     <div className="add-focus">
                                     + add new muscle group focus
                                     </div>
