@@ -18,14 +18,16 @@ class Tracker extends Component {
 
     }
     componentDidMount() {
-        let id = this.props.userInfo.id;
+        let user_id = this.props.userInfo.id;
+        let id = this.props.match.params.id;
         getAllDays(id)
         .then( res => {
             if (res.status !== 200){
                 console.log(res);
             }
             else{
-                this.setState({ days: res.data.day_id });
+                this.setState({ days: res.data });
+                console.log(res.data)
             }
         })
     }
@@ -34,30 +36,30 @@ class Tracker extends Component {
 
 
     render() {
-        const days = this.state.days;
-        const displayDayItems = days.map(day => {
-            const index = days.indexOf(day);
-            return (<TrackerItem 
-                key={index} 
-                index={index}
-                id={day.project_id} 
-                focus_id={day.focus_id}
-                day_id={day.day_id}
-                />)
-        })
+        // const days = this.state.days;
+        // const displayDayItems = days.map(day => {
+        //     const index = days.indexOf(day);
+        //     return (<TrackerItem 
+        //         key={index} 
+        //         index={index}
+        //         id={day.project_id} 
+        //         focus_id={day.focus_id}
+        //         day_id={day.day_id}
+        //         />)
+        // })
         
         return(
             <div className="tracker-wrapper">
                 <div className="week-wrapper">
                     <div className="week-days">
-                        {displayDayItems}
-                        {/* <p className="days">Monday</p>
+                        {/* {displayDayItems} */}
+                        <p className="days">Monday</p>
                         <p className="days">Tuesday</p>
                         <p className="days">Wednesday</p>
                         <p className="days">Thursday</p>
                         <p className="days">Friday</p>
                         <p className="days">Saturday</p>
-                        <p className="days">Sunday</p>                         */}
+                        <p className="days">Sunday</p>                        
                     </div>
                 </div>
 

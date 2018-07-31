@@ -3,13 +3,22 @@ const getDb = require('../database/bootstrap.database');
 
 const weekRouter = express.Router();
 //test works
-weekRouter.get('/:projectId', (req, res) => {
+// weekRouter.get('/:projectId', (req, res) => {
+//     const id = req.params.projectId;
+//     const db = getDb();
+//     db.READ.get_week( [id] )
+//         .then( week => res.status(200).send(week))
+//         .catch( err => res.status(500).send(err))
+// });
+//get days
+weekRouter.get('/:projectId', (req,res) => {
     const id = req.params.projectId;
     const db = getDb();
-    db.READ.get_week( [id] )
-        .then( week => res.status(200).send(week))
+    db.READ.get_days( [id] )
+        .then( days => res.status(200).send(days))
         .catch( err => res.status(500).send(err))
 });
+
 //test works
 weekRouter.get('/:projectId/:dayId', (req, res) => {
     const id = req.params.projectId;

@@ -16,12 +16,14 @@ function getOneDay(projectid, dayid) {
         .catch( err => {throw err} );
 }
 
-function getOneFocus(projectid, dayid, focusid) {
-    return axios
-        .get(`${baseURL}/${projectid}/${dayid}/${focusid}`)
-        .then( res => res )
-        .catch( err => {throw err} );
-}
+//dont need
+
+// function getOneFocus(projectid, dayid, focusid) {
+//     return axios
+//         .get(`${baseURL}/${projectid}/${dayid}/${focusid}`)
+//         .then( res => res )
+//         .catch( err => {throw err} );
+// }
 
 function createLift(projectid, dayid, focusid, body){
     return axios
@@ -47,7 +49,7 @@ function deleteLift(liftid){
 export {
     getAllDays,
     getOneDay,
-    getOneFocus,    
+    // getOneFocus,    
     createLift,
     updateLift,
     deleteLift
