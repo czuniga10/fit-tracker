@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const baseURL = '/api/week';
+const baseURL = '/api/workout';
 
-function getAllDays(projectid) {
+function getAllWorkouts(projectid) {
     return axios
         .get(`${baseURL}/${projectid}`)
         .then( res => res )
@@ -15,15 +15,6 @@ function getOneDay(projectid, dayid) {
         .then( res => res )
         .catch( err => {throw err} );
 }
-
-//dont need
-
-// function getOneFocus(projectid, dayid, focusid) {
-//     return axios
-//         .get(`${baseURL}/${projectid}/${dayid}/${focusid}`)
-//         .then( res => res )
-//         .catch( err => {throw err} );
-// }
 
 function createLift(projectid, dayid, focusid, body){
     return axios
@@ -49,7 +40,6 @@ function deleteLift(liftid){
 export {
     getAllDays,
     getOneDay,
-    // getOneFocus,    
     createLift,
     updateLift,
     deleteLift
