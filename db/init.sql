@@ -144,11 +144,11 @@ VALUES
     (1,'Superset', '3X10', '60', false),
     (1,'Normal', '3XFailure', 'BW', false),
 
-    (1,'Warmup', '3X10', '100', false),
-    (1,'Warmup', '3X10', '50', false),
-    (1,'Warmup', '3X10', '80', false),
-    (1,'Warmup', '3x10', '35', false),
-    (1,'Warmup', '3x10', '50', false),
-    (1,'Warmup', '3X10', '55', false),
-    (1,'Warmup', '3XFailure', 'BW', false)
+    (2,'Warmup', '3X20', '200', false),
+    (2,'Warmup', '3X20', '50', false),
+    (2,'Warmup', '3X20', '80', false),
+    (2,'Warmup', '3x20', '35', false),
+    (2,'Warmup', '3x20', '50', false),
+    (2,'Warmup', '3X10', '55', false),
+    (2,'Warmup', '3XFailure', 'BW', false)
     ;
