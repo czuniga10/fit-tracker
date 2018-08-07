@@ -1,10 +1,9 @@
 UPDATE exercise
 SET
-    workout_id = $1,
-    exercise = $3
+    exercise = $2
     
 WHERE
-    id = $2
+    id = $1
     
 returning *
 ;

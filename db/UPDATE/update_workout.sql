@@ -1,12 +1,11 @@
 UPDATE workout
 SET
-    project_id = $1,
-    name = $3,
-    date = $4,
-    time = $5
+    name = $2,
+    date = $3,
+    time = $4
     
 WHERE
-    id = $2
+    id = $1
     
 returning *
 ;

@@ -23,12 +23,11 @@ workoutRouter.post('/:projectId/create', (req, res) => {
 });
 
 //works
-workoutRouter.put('/:projectId/update/:id', (req, res) => {
-    const id = req.params.projectId;
-    const workout_id = req.params.id;
+workoutRouter.put('/update/:id', (req, res) => {
+    const id = req.params.id;
     const db = getDb();
     const { name, date, time } = req.body;
-    db.UPDATE.update_workout([ id, workout_id, name, date, time ])
+    db.UPDATE.update_workout([ id, name, date, time ])
         .then( promise => res.status(200).send(promise))
         .catch( err => res.status(500).send(err) )
 });

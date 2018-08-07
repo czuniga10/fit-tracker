@@ -1,13 +1,12 @@
 UPDATE set
 SET
-    exercise_id = $1,
-    type = $3,
-    reps = $4,
-    weight = $5,
-    is_completed = $6
+    type = $2,
+    reps = $3,
+    weight = $4,
+    is_completed = $5
     
 WHERE
-    id = $2
+    id = $1
     
 returning *
 ;

@@ -23,12 +23,11 @@ exerciseRouter.post('/:workoutId/create', (req, res) => {
 });
 
 //works
-exerciseRouter.put('/:workoutId/update/:id', (req, res) => {
-    const id = req.params.workoutId;
-    const workout_id = req.params.id;
+exerciseRouter.put('/update/:id', (req, res) => {
+    const id = req.params.id;
     const db = getDb();
     const { exercise } = req.body;
-    db.UPDATE.update_exercise([ id, workout_id, exercise ])
+    db.UPDATE.update_exercise([ id, exercise ])
         .then( promise => res.status(200).send(promise))
         .catch( err => res.status(500).send(err) )
 });
