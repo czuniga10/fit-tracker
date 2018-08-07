@@ -9,38 +9,38 @@ function getAllWorkouts(projectid) {
         .catch( err => {throw err} );
 }
 
-function getOneDay(projectid, dayid) {
+function getOneWorkout(projectid, workoutid) {
     return axios
-        .get(`${baseURL}/${projectid}/${dayid}`)
+        .get(`${baseURL}/${projectid}/${workoutid}`)
         .then( res => res )
         .catch( err => {throw err} );
 }
 
-function createLift(projectid, dayid, focusid, body){
+function createWorkout(body){
     return axios
-        .post(`${baseURL}/${projectid}/${dayid}/${focusid}/create`, body)
+        .post(`${baseURL}/create`, body)
         .then( res => res)
         .catch( err => {throw err})
 }
 
-function updateLift(projectid, dayid, focusid, liftid, body){
+function updateWorkout(workoutid, body){
     return axios
-        .post(`${baseURL}/${projectid}/${dayid}/${focusid}/update/${liftid}`, body)
+        .post(`${baseURL}/update/${workoutid}`, body)
         .then( res => res)
         .catch( err => {throw err})
 }
 
-function deleteLift(liftid){
+function deleteWorkout(workoutid){
     return axios
-        .post(`${baseURL}/delete/${liftid}`)
+        .post(`${baseURL}/delete/${workoutid}`)
         .then( res => res)
         .catch( err => {throw err})
 }
 
 export {
-    getAllDays,
-    getOneDay,
-    createLift,
-    updateLift,
-    deleteLift
+    getAllWorkouts,
+    getOneWorkout,
+    createWorkout,
+    updateWorkout,
+    deleteWorkout
 };
