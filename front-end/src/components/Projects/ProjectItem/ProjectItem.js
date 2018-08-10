@@ -14,7 +14,7 @@ class ProjectItem extends Component {
         const {id, user_id, name, details} = this.props;
         console.log(this.props)
         return(
-        <Link to={`/tracker/${id}`} className='proj-holder-link'>
+        <Link to={`/workout/${id}`} className='proj-holder-link'>
             
                 <div className="proj-holder">
                     <div className="name">

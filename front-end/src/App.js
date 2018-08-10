@@ -37,7 +37,7 @@ class App extends Component {
         !loading && 
         <div className="App">
           <Route exact path='/' component={Projects} />
-          {/* <Route path='/tracker/:id' component={Tracker} /> */}
+          {/* <Route path='/workout/:id' component={Workout} /> */}
         </div>
       );
     }
