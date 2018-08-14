@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import Projects from './components/Projects/Projects';
+import Workouts from './components/Workouts/Workouts';
+
 
 
 import { findUserInfo } from './services/user.services';
@@ -37,7 +39,7 @@ class App extends Component {
         !loading && 
         <div className="App">
           <Route exact path='/' component={Projects} />
-          {/* <Route path='/workout/:id' component={Workout} /> */}
+          <Route path='/workout/:id' component={Workouts} />
         </div>
       );
     }
