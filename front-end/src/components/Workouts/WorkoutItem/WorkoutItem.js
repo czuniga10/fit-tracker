@@ -11,17 +11,20 @@ class WorkoutItem extends Component {
         }
     }
     render() {
-        const {id, project_id, date, details} = this.props;
+        const {id, project_id, name, date, time} = this.props;
         console.log(this.props)
         return(
         <Link to={`/workout/${id}`} className='proj-holder-link'>
             
                 <div className="proj-holder">
                     <div className="name">
+                        {name}
+                    </div>
+                    <div className="date">
                         {date}
                     </div>
-                    <div className="details">
-                        {details}
+                    <div className="time">
+                        {time}
                     </div>
                 </div> 
         </Link>

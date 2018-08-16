@@ -11,7 +11,7 @@ class Exercises extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            workouts: []
+            exercises: []
         }
 
     // this.handleYupClick = this.handleYupClick.bind(this);
@@ -20,13 +20,13 @@ class Exercises extends Component {
     }
     componentDidMount() {
         let id = this.props.userInfo.id;
-        getAllWorkouts(id)
+        getAllExercises(id)
         .then( res => {
             if (res.status !== 200){
                 console.log(res);
             }
             else{
-                this.setState({ workouts: res.data });
+                this.setState({ exercises: res.data });
             }
         })
     }
@@ -35,16 +35,15 @@ class Exercises extends Component {
 
 
     render() {
-        const workouts = this.state.workouts;
-        const displayWorkoutItems = workouts.map(workout => {
-            const index = workouts.indexOf(workout);
-            return (<WorkoutItem 
+        const exercises = this.state.exercises;
+        const displayExerciseItems = exercises.map(exercise => {
+            const index = exercises.indexOf(exercise);
+            return (<ExerciseItem 
                 key={index} 
                 index={index}
-                id={workout.id}
-                project_id={workout.project_id}
-                date={workout.date} 
-                details={workout.time} 
+                id={exercises.id}
+                workout_id={exercies.workout_id}
+                exercies={exercises.exercie} 
                 />)
         })
         
@@ -53,7 +52,7 @@ class Exercises extends Component {
                 <div className="workout-title">
                     Workouts
                 </div>
-                    {displayWorkoutItems}
+                    {displayExercisetItems}
             </div> 
         
         
