@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import './Projects.css'
 
-import { getAllWorkouts } from '../../services/workout.services';
+import { getAllExercises } from '../../services/exercise.services';
 import { updateUser } from '../../actions/actionCreators';
 
-import ProjectItem from './ProjectItem/ProjectItem';
+import ExerciseItem from './ExerciseItem/ExerciseItem';
 
 class Exercises extends Component {
     constructor(props) {
