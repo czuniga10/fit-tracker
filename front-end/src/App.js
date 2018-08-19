@@ -5,6 +5,9 @@ import './App.css';
 
 import Projects from './components/Projects/Projects';
 import Workouts from './components/Workouts/Workouts';
+import Exercises from './components/Exercises/Exercises';
+import Sets from './components/Sets/Sets';
+
 
 
 
@@ -40,6 +43,8 @@ class App extends Component {
         <div className="App">
           <Route exact path='/' component={Projects} />
           <Route path='/workout/:id' component={Workouts} />
+          <Route path='/exercise/:id' component={Exercises} />
+          <Route path='/set/:id' component={Sets} />
         </div>
       );
     }

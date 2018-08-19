@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import './Projects.css'
+// import './Projects.css'
 
 import { getAllWorkouts } from '../../services/workout.services';
 import { updateUser } from '../../actions/actionCreators';
 
-import ProjectItem from './ProjectItem/ProjectItem';
+import WorkoutItem from './WorkoutItem/WorkoutItem';
 
 class Workouts extends Component {
     constructor(props) {
@@ -43,8 +43,9 @@ class Workouts extends Component {
                 index={index}
                 id={workout.id}
                 project_id={workout.project_id}
+                name={workout.name}                
                 date={workout.date} 
-                details={workout.time} 
+                time={workout.time} 
                 />)
         })
         

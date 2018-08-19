@@ -11,14 +11,14 @@ class ExerciseItem extends Component {
         }
     }
     render() {
-        const {id, workout_id, exercise} = this.props;
+        const {id, exercises} = this.props;
         console.log(this.props)
         return(
-        <Link to={`/exercise/${id}`} className='proj-holder-link'>
+        <Link to={`/set/${id}`} className='proj-holder-link'>
             
                 <div className="proj-holder">
                     <div className="exercise">
-                        {exercise}
+                        {exercises}
                     </div>
                 </div>
         </Link>

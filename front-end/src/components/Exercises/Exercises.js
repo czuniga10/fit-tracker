@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import './Projects.css'
+// import './Projects.css'
 
 import { getAllExercises } from '../../services/exercise.services';
 import { updateUser } from '../../actions/actionCreators';
@@ -27,6 +27,7 @@ class Exercises extends Component {
             }
             else{
                 this.setState({ exercises: res.data });
+                console.log(res.data);
             }
         })
     }
@@ -36,23 +37,23 @@ class Exercises extends Component {
 
     render() {
         const exercises = this.state.exercises;
-        const displayExerciseItems = exercises.map(exercise => {
-            const index = exercises.indexOf(exercise);
+        const displayExerciseItems = exercises.map(ex => {
+            const index = exercises.indexOf(ex);
             return (<ExerciseItem 
                 key={index} 
                 index={index}
-                id={exercises.id}
-                workout_id={exercies.workout_id}
-                exercies={exercises.exercie} 
+                id={ex.id}
+                workout_id={ex.workout_id}
+                exercises={ex.exercise} 
                 />)
         })
         
         return(
             <div className="workout-wrapper">
                 <div className="workout-title">
-                    Workouts
+                    Exercises
                 </div>
-                    {displayExercisetItems}
+                    {displayExerciseItems}
             </div> 
         
         
