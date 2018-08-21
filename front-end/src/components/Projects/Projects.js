@@ -31,9 +31,6 @@ class Projects extends Component {
         })
     }
 
-
-
-
     render() {
         const projects = this.state.projects;
         const displayProjectItems = projects.map(project => {
@@ -54,6 +51,9 @@ class Projects extends Component {
                     Projects
                 </div>
                     {displayProjectItems}
+                <div className="add-proj">
+                    <button type="button">+Add Project</button>
+                </div>
             </div> 
         
         
