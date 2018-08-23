@@ -6,6 +6,7 @@ import { getAllProjects } from '../../services/project.services';
 import { updateUser } from '../../actions/actionCreators';
 
 import ProjectItem from './ProjectItem/ProjectItem';
+import AddProject from './AddProject/AddProject';
 
 class Projects extends Component {
     constructor(props) {
@@ -13,9 +14,6 @@ class Projects extends Component {
         this.state = {
             projects: []
         }
-
-    // this.handleYupClick = this.handleYupClick.bind(this);
-    // this.handleNopeClick = this.handleNopeClick.bind(this);
 
     }
     componentDidMount() {
@@ -32,6 +30,7 @@ class Projects extends Component {
     }
 
     render() {
+
         const projects = this.state.projects;
         const displayProjectItems = projects.map(project => {
             const index = projects.indexOf(project);
@@ -51,9 +50,7 @@ class Projects extends Component {
                     Projects
                 </div>
                     {displayProjectItems}
-                <div className="add-proj">
-                    <button type="button">+Add Project</button>
-                </div>
+                    <AddProject />
             </div> 
         
         
