@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 import { updateUser } from '../../../actions/actionCreators';
 import { createProject } from '../../../services/project.services';
 
-// this.handleProjectSubmit = this.handleProjectSubmit.bind(this);
-// this.addNameToState = this.addNameToState.bind(this);
-// this.addDetailsToState = this.addDetailsToState.bind(this);
-
 
 class Projects extends Component {
     constructor(props) {
@@ -17,6 +13,10 @@ class Projects extends Component {
             details: ''
         }
     }
+
+    this.handleProjectSubmit = this.handleProjectSubmit.bind(this);
+    this.addNameToState = this.addNameToState.bind(this);
+    this.addDetailsToState = this.addDetailsToState.bind(this);
 
     addNameToState(value, e) {
         this.setState( {name: e.target.value} )
