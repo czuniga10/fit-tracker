@@ -27,8 +27,8 @@ class Projects extends Component {
     }
 
     handleProjectSubmit() {
-        const n = this.state.name;
-        const d = this.state.details;
+        const projName = this.state.name;
+        const projDetails = this.state.details;
         const body = {n, d}
         createProject(body)
             .then( res => {
@@ -52,9 +52,9 @@ class Projects extends Component {
         
         return(
             <div className="add-proj">
-                <input value={projName} onChange={e => { addNameToState(e)}} />
-                <input value={projDetails} onChange={e => { addDetailsToState(e)}}/>
-                <button onSubmit={handleProjectSubmit()}> +addProject </button>
+                <input value={projName} type="text" onChange={e => { addNameToState(e)}} />
+                <input value={projDetails} type="text" onChange={e => { addDetailsToState(e)}}/>
+                <button onSubmit={ e => { handleProjectSubmit(e) } }> +addProject </button>
             </div>
         
         
