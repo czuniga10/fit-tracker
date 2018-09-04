@@ -12,24 +12,22 @@ class Projects extends Component {
             name: '',
             details: ''
         }
+
+        this.handleProjectSubmit = this.handleProjectSubmit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-    this.handleProjectSubmit = this.handleProjectSubmit.bind(this);
-    this.addNameToState = this.addNameToState.bind(this);
-    this.addDetailsToState = this.addDetailsToState.bind(this);
-
-    addNameToState(value, e) {
-        this.setState( {name: e.target.value} )
-    }
-
-    addDetailsToState(value, e) {
-        this.setState( {details: e.target.value} )
+    handleInputChange(e){
+        const key = e.target.name;
+        let newState = this.state[key];
+        newState = e.target.value;
+        this.setState({ [key]: newState });
     }
 
     handleProjectSubmit() {
-        const projName = this.state.name;
-        const projDetails = this.state.details;
-        const body = {n, d}
+        const name = this.state.name;
+        const details = this.state.details;
+        const body = {name, details}
         createProject(body)
             .then( res => {
                 if (res.status !== 200) {
@@ -52,8 +50,8 @@ class Projects extends Component {
         
         return(
             <div className="add-proj">
-                <input value={projName} type="text" onChange={e => { addNameToState(e)}} />
-                <input value={projDetails} type="text" onChange={e => { addDetailsToState(e)}}/>
+                <input className='name' value={this.state.name} type="text" name="name" onChange={ e => {this.handleInputChange(e) }}/>
+                <input className='details' value={this.state.details} type="text" name="details" onChange={ e => {this.handleInputChange(e) }}/>
                 <button onSubmit={ e => { handleProjectSubmit(e) } }> +addProject </button>
             </div>
         
