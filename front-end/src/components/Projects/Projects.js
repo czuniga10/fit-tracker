@@ -4,6 +4,7 @@ import './Projects.css'
 
 import { getAllProjects } from '../../services/project.services';
 import { updateUser } from '../../actions/actionCreators';
+import { createProject } from '../../services/project.services';
 
 import ProjectItem from './ProjectItem/ProjectItem';
 import AddProject from './AddProject/AddProject';
@@ -12,8 +13,13 @@ class Projects extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            projects: []
+            projects: [],
+            name: '',
+            details: ''
         }
+
+        this.handleProjectSubmit = this.handleProjectSubmit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
 
     }
     componentDidMount() {
@@ -27,6 +33,43 @@ class Projects extends Component {
                 this.setState({ projects: res.data });
             }
         })
+    }
+
+    handleInputChange(e){
+        const key = e.target.name;
+        let newState = this.state[key];
+        newState = e.target.value;
+        this.setState({ [key]: newState });
+    }
+
+    handleProjectSubmit() {
+        let user_id = this.props.userInfo.id;
+        const name = this.state.name;
+        const details = this.state.details;
+        const body = {user_id, name, details}
+        createProject(body)
+            .then( res => {
+                if (res.status !== 200) {
+                    alert(res)
+                } else {
+                    console.log(res.data)
+                    getAllProjects(user_id)
+                        .then( res => {
+                            if (res.status !== 200){
+                                console.log(res);
+                            }
+                            else{
+                                this.setState({ projects: res.data });
+                            }
+                        })
+                }
+            
+            } )
+       .catch(err => {throw err})
+    }
+
+    handleUpdate() {
+        
     }
 
     render() {
@@ -50,7 +93,11 @@ class Projects extends Component {
                     Projects
                 </div>
                     {displayProjectItems}
-                    <AddProject />
+                <div className="add-proj">
+                    <input className='name' value={this.state.name} type="text" name="name" onChange={ e => {this.handleInputChange(e) }}/>
+                    <input className='details' value={this.state.details} type="text" name="details" onChange={ e => {this.handleInputChange(e) }}/>
+                    <button onClick={ e => { this.handleProjectSubmit(e) } }> +addProject </button>
+                </div>
             </div> 
         
         
