@@ -13,11 +13,10 @@ workoutRouter.get('/:projectId', (req,res) => {
 });
 
 //works
-workoutRouter.post('/:projectId/create', (req, res) => {
-    const id = req.params.projectId;
+workoutRouter.post('/create', (req, res) => {
     const db = getDb();
-    const { name, date, time } = req.body;
-    db.CREATE.create_workout([ id, name, date, time ])
+    const { project_id, name, date, time } = req.body;
+    db.CREATE.create_workout([ project_id, name, date, time ])
         .then( (promise) => res.status(200).send(promise) )
         .catch( err => res.status(500).send(err) )
 });

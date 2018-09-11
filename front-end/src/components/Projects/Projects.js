@@ -7,7 +7,6 @@ import { updateUser } from '../../actions/actionCreators';
 import { createProject } from '../../services/project.services';
 
 import ProjectItem from './ProjectItem/ProjectItem';
-import AddProject from './AddProject/AddProject';
 
 class Projects extends Component {
     constructor(props) {

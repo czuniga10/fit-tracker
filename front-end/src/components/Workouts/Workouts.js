@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 // import './Projects.css'
 
-import { getAllWorkouts } from '../../services/workout.services';
+import { getAllWorkouts, createWorkout } from '../../services/workout.services';
 import { updateUser } from '../../actions/actionCreators';
 
 import WorkoutItem from './WorkoutItem/WorkoutItem';
@@ -11,15 +11,18 @@ class Workouts extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            workouts: []
+            workouts: [],
+            name: '',
+            date: '',
+            time: ''
         }
 
-    // this.handleYupClick = this.handleYupClick.bind(this);
-    // this.handleNopeClick = this.handleNopeClick.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleWorkoutSubmit = this.handleWorkoutSubmit.bind(this);
 
     }
     componentDidMount() {
-        let id = this.props.userInfo.id;
+        let id = this.props.match.params.id;
         getAllWorkouts(id)
         .then( res => {
             if (res.status !== 200){
@@ -31,8 +34,40 @@ class Workouts extends Component {
         })
     }
 
+    handleInputChange(e){
+        const key = e.target.name;
+        let newState = this.state[key];
+        newState = e.target.value;
+        console.log(newState);
+        this.setState({ [key]: newState });
+    }
 
-
+    handleWorkoutSubmit() {
+        let project_id = this.props.match.params.id;
+        const name = this.state.name;
+        const date = this.state.date;
+        const time = this.state.time;
+        const body = {project_id, name, date, time}
+        createWorkout(body)
+            .then( res => {
+                if (res.status !== 200) {
+                    alert(res)
+                } else {
+                    console.log(res.data)
+                    getAllWorkouts(project_id)
+                        .then( res => {
+                            if (res.status !== 200){
+                                console.log(res);
+                            }
+                            else{
+                                this.setState({ workouts: res.data });
+                            }
+                        })
+                }
+            
+            } )
+       .catch(err => {throw err})
+    }
 
     render() {
         const workouts = this.state.workouts;
@@ -55,6 +90,12 @@ class Workouts extends Component {
                     Workouts
                 </div>
                     {displayWorkoutItems}
+                <div className="add-workout">
+                    <input className='name' value={this.state.name} type="text" name="name" onChange={ e => {this.handleInputChange(e) }}/>
+                    <input className='date' value={this.state.date} type="text" name="date" onChange={ e => {this.handleInputChange(e) }}/>
+                    <input className='time' value={this.state.time} type="text" name="time" onChange={ e => {this.handleInputChange(e) }}/>
+                    <button onClick={ e => { this.handleWorkoutSubmit(e) } }> +addWorkout </button>
+                </div>
             </div> 
         
         
@@ -65,4 +106,4 @@ function mapStateToProps(state){
     return state;
   }
   
-  export default connect( mapStateToProps, {updateUser} ) (Workouts)
+  export default connect( mapStateToProps ) (Workouts)

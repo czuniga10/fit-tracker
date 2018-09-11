@@ -12,7 +12,6 @@ class WorkoutItem extends Component {
     }
     render() {
         const {id, name, date, time} = this.props;
-        console.log(this.props)
         return(
         <Link to={`/exercise/${id}`} className='proj-holder-link'>
             
