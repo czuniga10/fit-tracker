@@ -12,25 +12,25 @@ class SetItem extends Component {
     }
     render() {
         const {id, type, reps, weight, is_completed} = this.props;
-        console.log(this.props)
+        console.log(is_completed)
         return(
-        <Link to={`/set/${id}`} className='proj-holder-link'>
+        // <Link to={`/set/${id}`} className='proj-holder-link'>
             
                 <div className="proj-holder">
-                    <div className="name">
+                    <div className="type">
                         {type}
                     </div>
-                    <div className="details">
+                    <div className="reps">
                         {reps}
                     </div>
-                    <div className="details">
+                    <div className="weight">
                         {weight}
                     </div>
-                    <div className="details">
+                    <button className="is_completed" value={this.state.is_completed} type="checkbox">
                         {is_completed}
-                    </div>
+                    </button>
                 </div> 
-        </Link>
+        // </Link>
         )
     }
 }

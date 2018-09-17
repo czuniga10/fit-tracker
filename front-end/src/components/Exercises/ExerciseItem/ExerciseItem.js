@@ -12,7 +12,7 @@ class ExerciseItem extends Component {
     }
     render() {
         const {id, exercises} = this.props;
-        console.log(this.props)
+
         return(
         <Link to={`/set/${id}`} className='proj-holder-link'>
             

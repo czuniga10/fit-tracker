@@ -30,7 +30,7 @@ workoutRouter.put('/update/:id', (req, res) => {
         .then( promise => res.status(200).send(promise))
         .catch( err => res.status(500).send(err) )
 });
-//test doesnt work
+//test doesn't work
 // workoutRouter.delete('/delete/:id', (req, res) => {
 //     const id = req.params.id;
 //     const db = getDb();

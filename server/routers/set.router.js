@@ -13,11 +13,10 @@ setRouter.get('/:exerciseId', (req,res) => {
 });
 
 //works
-setRouter.post('/:exerciseId/create', (req, res) => {
-    const id = req.params.exerciseId;
+setRouter.post('/create', (req, res) => {
     const db = getDb();
-    const { type, reps, weight, is_completed } = req.body;
-    db.CREATE.create_set([ id, type, reps, weight, is_completed ])
+    const { exercise_id, type, reps, weight, is_completed } = req.body;
+    db.CREATE.create_set([ exercise_id, type, reps, weight, is_completed ])
         .then( (promise) => res.status(200).send(promise) )
         .catch( err => res.status(500).send(err) )
 });
