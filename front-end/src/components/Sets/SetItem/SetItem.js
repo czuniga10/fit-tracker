@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+
 
 // import './ProjectItem.css';
 
@@ -11,7 +11,7 @@ class SetItem extends Component {
         }
     }
     render() {
-        const {id, type, reps, weight, is_completed} = this.props;
+        const {type, reps, weight, is_completed} = this.props;
         console.log(is_completed)
         return(
         // <Link to={`/set/${id}`} className='proj-holder-link'>

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-// import './Projects.css'
 
-import { getAllExercises, createExercise } from '../../services/exercise.services';
+
+import { getAllExercises, createExercise, updateExercise } from '../../services/exercise.services';
 import { updateUser } from '../../actions/actionCreators';
 
 import ExerciseItem from './ExerciseItem/ExerciseItem';
@@ -14,25 +14,29 @@ class Exercises extends Component {
             exercises: [],
             exercise: ''
         }
-
+        this.refresh = this.refresh.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleExerciseSubmit = this.handleExerciseSubmit.bind(this);
+        this.handleCreateExercise = this.handleCreateExercise.bind(this);
+        this.handleSaveChange = this.handleSaveChange.bind(this);
 
     }
     componentDidMount() {
-        let id = this.props.match.params.id;
-        getAllExercises(id)
-        .then( res => {
-            if (res.status !== 200){
-                console.log(res);
-            }
-            else{
-                this.setState({ exercises: res.data });
-                console.log(res.data);
-            }
-        })
+        let workout_id = this.props.match.params.id;
+        this.refresh(workout_id)
     }
-
+    //'refreshes' components to update webpage
+    refresh(workout_id) {
+        getAllExercises(workout_id)
+            .then( res => {
+                if (res.status !== 200){
+                    console.log(res);
+                }
+                else{
+                    this.setState({ exercises: res.data });
+                }
+            })
+    }
+    //stores user input in state
     handleInputChange(e){
         const key = e.target.name;
         let newState = this.state[key];
@@ -40,8 +44,8 @@ class Exercises extends Component {
         console.log(newState);
         this.setState({ [key]: newState });
     }
-
-    handleExerciseSubmit() {
+    //create
+    handleCreateExercise() {
         let workout_id = this.props.match.params.id;
         const exercise = this.state.exercise;
         const body = {workout_id, exercise}
@@ -50,20 +54,23 @@ class Exercises extends Component {
                 if (res.status !== 200) {
                     alert(res)
                 } else {
-                    console.log(res.data)
-                    getAllExercises(workout_id)
-                        .then( res => {
-                            if (res.status !== 200){
-                                console.log(res);
-                            }
-                            else{
-                                this.setState({ exercises: res.data });
-                            }
-                        })
+                    this.refresh(workout_id);
                 }
-            
-            } )
-       .catch(err => {throw err})
+            })
+            .catch(err => {throw err})
+    }
+    //edit
+    handleSaveChange(e, index) {
+        const exercise_id = this.state.exercises[index].id;
+        const body = this.state.exercise;
+        updateExercise(exercise_id, body)
+            .then( res => {
+                if (res.status !== 200) {
+                    alert(res);
+                } 
+
+            })
+            .catch(err => {throw err});
     }
 
     render() {
@@ -75,7 +82,9 @@ class Exercises extends Component {
                 index={index}
                 id={ex.id}
                 workout_id={ex.workout_id}
-                exercises={ex.exercise} 
+                exercise={ex.exercise} 
+                handleSaveChange={this.handleSaveChange}
+                handleInputChange={this.handleInputChange}
                 />)
         })
         
@@ -87,7 +96,7 @@ class Exercises extends Component {
                     {displayExerciseItems}
                 <div className="add-workout">
                     <input className='exercise' value={this.state.exercise} type="text" name="exercise" onChange={ e => {this.handleInputChange(e) }}/>
-                    <button onClick={ e => { this.handleExerciseSubmit(e) } }> +addSet </button>
+                    <button onClick={ e => { this.handleCreateExercise(e) } }> +addSet </button>
                 </div>
             </div> 
         
