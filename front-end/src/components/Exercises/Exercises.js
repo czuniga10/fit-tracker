@@ -61,14 +61,17 @@ class Exercises extends Component {
     }
     //edit
     handleSaveChange(e, index) {
+        let workout_id = this.props.match.params.id;
         const exercise_id = this.state.exercises[index].id;
         const body = this.state.exercise;
+        console.log(body);
         updateExercise(exercise_id, body)
             .then( res => {
                 if (res.status !== 200) {
                     alert(res);
-                } 
-
+                } else{
+                    this.refresh(workout_id)
+                }
             })
             .catch(err => {throw err});
     }

@@ -56,7 +56,6 @@ class ExerciseItem extends Component {
 
     render() {
         const {index, id, exercise, handleSaveChange, handleInputChange} = this.props;
-        console.log(exercise);
         return(
         <div>
         <Link to={`/set/${id}`} className='proj-holder-link'>
@@ -69,8 +68,8 @@ class ExerciseItem extends Component {
                 </div>
         </Link>
             <div>
-                <input className='update-exercise' value={exercise} type="text" name="exercise" onChange={ e => {handleInputChange(e) }} onBlur={e => {handleSaveChange(e, index)}}/>
-                <button onChange={e => {handleSaveChange(e, index)}}>save exercise</button>
+                <input className='update-exercise' value={this.state.exercise} type="text" name="exercise" onChange={ e => {handleInputChange(e) }} onBlur={e => {handleSaveChange(e, index)}}/>
+                <button value={this.state.exercise} onChange={e => {handleSaveChange(e, index)}}>save exercise</button>
             </div>
                         
                         {/* <div>

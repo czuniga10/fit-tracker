@@ -23,9 +23,9 @@ function createExercise(body){
         .catch( err => {throw err})
 }
 
-function updateExercise(exerciseid, body){
+function updateExercise(body){
     return axios
-        .post(`${baseURL}/update/${exerciseid}`, body)
+        .post(`${baseURL}/update`, body)
         .then( res => res)
         .catch( err => {throw err})
 }
