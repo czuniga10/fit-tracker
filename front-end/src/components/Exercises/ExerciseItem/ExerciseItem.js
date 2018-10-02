@@ -25,34 +25,34 @@ class ExerciseItem extends Component {
             newExercise: '',
             modalIsOpen: false
         }
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    // this.openModal = this.openModal.bind(this);
+    // this.afterOpenModal = this.afterOpenModal.bind(this);
+    // this.closeModal = this.closeModal.bind(this);
   }
-  componentDidMount(){
-    let exercise_id = this.props.id;
-    getOneExercise(exercise_id)
-    .then( res => {
-        if (res.status !== 200){
-            console.log(res);
-        }
-        else{
-            this.setState({ newExercise: res.data });
-        }
-    })
-  }
-    openModal() {
-        this.setState({modalIsOpen: true});
-    }
+//   componentDidMount(){
+//     let exercise_id = this.props.id;
+//     getOneExercise(exercise_id)
+//     .then( res => {
+//         if (res.status !== 200){
+//             console.log(res);
+//         }
+//         else{
+//             this.setState({ newExercise: res.data });
+//         }
+//     })
+//   }
+    // openModal() {
+    //     this.setState({modalIsOpen: true});
+    // }
 
-    afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        this.subtitle.style.color = '#f00';
-    }
+    // afterOpenModal() {
+    //     // references are now sync'd and can be accessed.
+    //     this.subtitle.style.color = '#f00';
+    // }
 
-    closeModal() {
-        this.setState({modalIsOpen: false});
-    }
+    // closeModal() {
+    //     this.setState({modalIsOpen: false});
+    // }
 
     render() {
         const {index, id, exercise, handleSaveChange, handleInputChange} = this.props;
@@ -64,12 +64,14 @@ class ExerciseItem extends Component {
                 <div className="proj-holder">
                     <div className="exercise">
                         {exercise}
-                    <input className='update-exercise' value={this.newExercise} type="text" name="exercise" onChange={ e => {handleInputChange(e) }} onBlur={e => {handleSaveChange(e, index)}}/>
-                                <button>delete exercise</button>
+                    
                     </div>
                 </div>
         </Link>
-
+            <div>
+                <input className='update-exercise' value={exercise} type="text" name="exercise" onChange={ e => {handleInputChange(e) }} onBlur={e => {handleSaveChange(e, index)}}/>
+                <button onChange={e => {handleSaveChange(e, index)}}>save exercise</button>
+            </div>
                         
                         {/* <div>
                             <button onClick={this.openModal}>Edit</button>
