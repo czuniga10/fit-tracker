@@ -64,12 +64,14 @@ class ExerciseItem extends Component {
                 <div className="proj-holder">
                     <div className="exercise">
                         {exercise}
+                    <input className='update-exercise' value={this.newExercise} type="text" name="exercise" onChange={ e => {handleInputChange(e) }} onBlur={e => {handleSaveChange(e, index)}}/>
+                                <button>delete exercise</button>
                     </div>
                 </div>
         </Link>
 
                         
-                        <div>
+                        {/* <div>
                             <button onClick={this.openModal}>Edit</button>
                             <Modal
                             isOpen={this.state.modalIsOpen}
@@ -87,7 +89,7 @@ class ExerciseItem extends Component {
                                 <button>delete exercise</button>
                             </form>
                             </Modal>
-                        </div>
+                        </div> */}
         </div>
         )
     }
