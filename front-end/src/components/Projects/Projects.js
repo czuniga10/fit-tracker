@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import './Projects.css'
 
-import { getAllProjects } from '../../services/project.services';
+import { getAllProjects, updateProject, createProject } from '../../services/project.services';
 import { updateUser } from '../../actions/actionCreators';
-import { createProject } from '../../services/project.services';
 
 import ProjectItem from './ProjectItem/ProjectItem';
 
@@ -16,14 +15,15 @@ class Projects extends Component {
             name: '',
             details: ''
         }
-
+        this.refresh = this.refresh.bind(this);
         this.handleProjectSubmit = this.handleProjectSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSaveChange = this.handleSaveChange.bind(this);
 
     }
     componentDidMount() {
         let id = this.props.userInfo.id;
-        refresh(id);
+        this.refresh(id);
     }
     //'refreshes' components to update webpage
     refresh(id) {
@@ -42,9 +42,10 @@ class Projects extends Component {
         const key = e.target.name;
         let newState = this.state[key];
         newState = e.target.value;
+        console.log(newState);
         this.setState({ [key]: newState });
     }
-
+    //creates new project
     handleProjectSubmit() {
         let user_id = this.props.userInfo.id;
         const name = this.state.name;
@@ -55,16 +56,30 @@ class Projects extends Component {
                 if (res.status !== 200) {
                     alert(res)
                 } else {
-                    refresh(user_id)
+                    this.refresh(user_id)
                 }
             
             } )
        .catch(err => {throw err})
     }
 
-    handleUpdate() {
-        
-    }
+   //edits
+   handleSaveChange(index) {
+    const id = this.state.projects[index].id;
+    const user_id = this.props.userInfo.id;
+    const name = this.state[`name${index}`];
+    const details = this.state[`details${index}`];
+    const body = {id, user_id, name, details};
+    updateProject(body)
+        .then( res => {
+            if (res.status !== 200) {
+                alert(res);
+            } else{
+                this.refresh(id);
+            }
+        })
+        .catch(err => {throw err});
+}
 
     render() {
 
@@ -78,6 +93,10 @@ class Projects extends Component {
                 userid={project.user_id}
                 name={project.name} 
                 details={project.details} 
+                nameValue={this.state[`name${index}`]}
+                detailsValue={this.state[`details${index}`]}
+                handleInputChange={this.handleInputChange}
+                handleSaveChange={this.handleSaveChange}
                 />)
         })
         

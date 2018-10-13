@@ -25,7 +25,7 @@ function createWorkout(body){
 
 function updateWorkout(workoutid, body){
     return axios
-        .post(`${baseURL}/update/${workoutid}`, body)
+        .put(`${baseURL}/update/${workoutid}`, body)
         .then( res => res)
         .catch( err => {throw err})
 }

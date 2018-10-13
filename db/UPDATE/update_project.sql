@@ -1,10 +1,11 @@
-update project
-set
+UPDATE project
+SET
     user_id = $2,
     name = $3,
     details = $4
-where
+WHERE
     id = $1
+
     
 returning *
 ;

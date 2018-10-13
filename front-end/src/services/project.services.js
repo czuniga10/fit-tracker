@@ -23,9 +23,9 @@ function createProject(body){
         .catch( err => {throw err})
 }
 
-function updateProject(userid, body){
+function updateProject(body){
     return axios
-        .post(`${baseURL}/update/${userid}`, body)
+        .put(`${baseURL}/update`, body)
         .then( res => res)
         .catch( err => {throw err})
 }

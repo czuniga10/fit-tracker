@@ -28,10 +28,9 @@ projectRouter.post('/create', (req, res) => {
         .catch( err => res.status(500).send(err) )
 });
 //test works
-projectRouter.put('/update/:id', (req, res) => {
+projectRouter.put('/update', (req, res) => {
     const db = getDb();
-    const id = req.params.id;
-    const { user_id, name, details } = req.body;
+    const { id, user_id, name, details } = req.body;
     db.UPDATE.update_project([ id, user_id, name, details ])
         .then( promise => res.status(200).send(promise))
         .catch( err => res.status(500).send(err) )
