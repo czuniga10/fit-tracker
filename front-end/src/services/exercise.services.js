@@ -25,7 +25,7 @@ function createExercise(body){
 
 function updateExercise(body){
     return axios
-        .post(`${baseURL}/update`, body)
+        .put(`${baseURL}/update`, body)
         .then( res => res)
         .catch( err => {throw err})
 }

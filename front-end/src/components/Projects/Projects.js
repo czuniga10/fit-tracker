@@ -23,15 +23,19 @@ class Projects extends Component {
     }
     componentDidMount() {
         let id = this.props.userInfo.id;
+        refresh(id);
+    }
+    //'refreshes' components to update webpage
+    refresh(id) {
         getAllProjects(id)
-        .then( res => {
-            if (res.status !== 200){
-                console.log(res);
-            }
-            else{
-                this.setState({ projects: res.data });
-            }
-        })
+            .then( res => {
+                if (res.status !== 200){
+                    console.log(res);
+                }
+                else{
+                    this.setState({ projects: res.data });
+                }
+            })
     }
 
     handleInputChange(e){
@@ -51,16 +55,7 @@ class Projects extends Component {
                 if (res.status !== 200) {
                     alert(res)
                 } else {
-                    console.log(res.data)
-                    getAllProjects(user_id)
-                        .then( res => {
-                            if (res.status !== 200){
-                                console.log(res);
-                            }
-                            else{
-                                this.setState({ projects: res.data });
-                            }
-                        })
+                    refresh(user_id)
                 }
             
             } )

@@ -25,37 +25,25 @@ class ExerciseItem extends Component {
             newExercise: '',
             modalIsOpen: false
         }
-    // this.openModal = this.openModal.bind(this);
-    // this.afterOpenModal = this.afterOpenModal.bind(this);
-    // this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
-//   componentDidMount(){
-//     let exercise_id = this.props.id;
-//     getOneExercise(exercise_id)
-//     .then( res => {
-//         if (res.status !== 200){
-//             console.log(res);
-//         }
-//         else{
-//             this.setState({ newExercise: res.data });
-//         }
-//     })
-//   }
-    // openModal() {
-    //     this.setState({modalIsOpen: true});
-    // }
+    openModal() {
+        this.setState({modalIsOpen: true});
+    }
 
-    // afterOpenModal() {
-    //     // references are now sync'd and can be accessed.
-    //     this.subtitle.style.color = '#f00';
-    // }
+    afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        this.subtitle.style.color = '#f00';
+    }
 
-    // closeModal() {
-    //     this.setState({modalIsOpen: false});
-    // }
+    closeModal() {
+        this.setState({modalIsOpen: false});
+    }
 
     render() {
-        const {index, id, exercise, handleSaveChange, handleInputChange} = this.props;
+        const {index, id, exercise, exerciseValue, handleSaveChange, handleInputChange} = this.props;
         return(
         <div>
         <Link to={`/set/${id}`} className='proj-holder-link'>
@@ -67,12 +55,12 @@ class ExerciseItem extends Component {
                     </div>
                 </div>
         </Link>
-            <div>
-                <input className='update-exercise' value={this.state.exercise} type="text" name="exercise" onChange={ e => {handleInputChange(e) }} onBlur={e => {handleSaveChange(e, index)}}/>
-                <button value={this.state.exercise} onChange={e => {handleSaveChange(e, index)}}>save exercise</button>
-            </div>
+            {/* <div>
+                <input className='update-exercise' value={exerciseValue} type="text" name={`exercise${index}`} onChange={ e => {handleInputChange(e) }}/>
+                <button onClick={() => handleSaveChange(index)}>save exercise</button>
+            </div> */}
                         
-                        {/* <div>
+                        <div>
                             <button onClick={this.openModal}>Edit</button>
                             <Modal
                             isOpen={this.state.modalIsOpen}
@@ -86,11 +74,11 @@ class ExerciseItem extends Component {
                             <button onClick={this.closeModal}>X</button>
                             <div>edit exercise here</div>
                             <form>
-                                <input className='update-exercise' value={this.newExercise} type="text" name="exercise" onChange={ e => {handleInputChange(e) }} onBlur={e => {handleSaveChange(e, index)}}/>
-                                <button>delete exercise</button>
+                                <input className='update-exercise' value={exerciseValue} type="text" name={`exercise${index}`} onChange={ e => {handleInputChange(e) }}/>
+                                <button onClick={() => handleSaveChange(index)}>save exercise</button>
                             </form>
                             </Modal>
-                        </div> */}
+                        </div>
         </div>
         )
     }

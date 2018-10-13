@@ -60,20 +60,25 @@ class Exercises extends Component {
             .catch(err => {throw err})
     }
     //edit
-    handleSaveChange(e, index) {
+    handleSaveChange(index) {
         let workout_id = this.props.match.params.id;
         const exercise_id = this.state.exercises[index].id;
-        const body = this.state.exercise;
-        console.log(body);
-        updateExercise(exercise_id, body)
+        const ex = this.state[`exercise${index}`];
+        const body = {exercise_id, ex};
+        console.log(exercise_id);
+        console.log(ex);
+        updateExercise(body)
             .then( res => {
                 if (res.status !== 200) {
                     alert(res);
                 } else{
-                    this.refresh(workout_id)
+                    this.refresh(workout_id);
                 }
             })
             .catch(err => {throw err});
+        this.setState({
+            [`exercise${index}`]: ''
+        })
     }
 
     render() {
@@ -88,9 +93,10 @@ class Exercises extends Component {
                 exercise={ex.exercise} 
                 handleSaveChange={this.handleSaveChange}
                 handleInputChange={this.handleInputChange}
+                exerciseValue={this.state[`exercise${index}`]}
                 />)
         })
-        
+        console.log(this.state);
         return(
             <div className="workout-wrapper">
                 <div className="workout-title">
