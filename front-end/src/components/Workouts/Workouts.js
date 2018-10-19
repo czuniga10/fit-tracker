@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 // import './Projects.css'
 
-import { getAllWorkouts, createWorkout } from '../../services/workout.services';
+import { getAllWorkouts, createWorkout, updateWorkout } from '../../services/workout.services';
 import { updateUser } from '../../actions/actionCreators';
 
 import WorkoutItem from './WorkoutItem/WorkoutItem';
@@ -17,21 +17,27 @@ class Workouts extends Component {
             time: ''
         }
 
+        this.refresh = this.refresh.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSaveChange = this.handleSaveChange.bind(this);
         this.handleWorkoutSubmit = this.handleWorkoutSubmit.bind(this);
 
     }
     componentDidMount() {
-        let id = this.props.match.params.id;
-        getAllWorkouts(id)
-        .then( res => {
-            if (res.status !== 200){
-                console.log(res);
-            }
-            else{
-                this.setState({ workouts: res.data });
-            }
-        })
+        let project_id = this.props.match.params.id;
+        this.refresh(project_id)
+    }
+
+    refresh(project_id){
+        getAllWorkouts(project_id)
+            .then( res => {
+                if (res.status !== 200){
+                    console.log(res);
+                }
+                else{
+                    this.setState({ projects: res.data });
+                }
+            })
     }
 
     handleInputChange(e){
@@ -53,20 +59,30 @@ class Workouts extends Component {
                 if (res.status !== 200) {
                     alert(res)
                 } else {
-                    console.log(res.data)
-                    getAllWorkouts(project_id)
-                        .then( res => {
-                            if (res.status !== 200){
-                                console.log(res);
-                            }
-                            else{
-                                this.setState({ workouts: res.data });
-                            }
-                        })
+                    this.refresh(project_id)
                 }
             
             } )
        .catch(err => {throw err})
+    }
+
+    handleSaveChange(index) {
+        const id = this.state.workouts[index].id;
+        const project_id = this.props.match.params.id;
+        const name = this.state[`name${index}`];
+        const date = this.state[`date${index}`];
+        const time = this.state[`time${index}`];
+        const body = {id, project_id, name, date, time};
+        updateWorkout(body)
+            .then( res => {
+                if (res.status !== 200) {
+                    alert(res);
+                } else{
+                    this.refresh(project_id);
+                }
+            })
+            .catch(err => {throw err});
+
     }
 
     render() {
@@ -80,7 +96,12 @@ class Workouts extends Component {
                 project_id={workout.project_id}
                 name={workout.name}                
                 date={workout.date} 
-                time={workout.time} 
+                time={workout.time}
+                nameValue={this.state[`name${index}`]} 
+                dateValue={this.state[`date${index}`]} 
+                timeValue={this.state[`time${index}`]} 
+                handleInputChange={this.handleInputChange}
+                handleSaveChange={this.handleSaveChange}
                 />)
         })
         

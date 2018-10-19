@@ -23,9 +23,9 @@ function createWorkout(body){
         .catch( err => {throw err})
 }
 
-function updateWorkout(workoutid, body){
+function updateWorkout(body){
     return axios
-        .put(`${baseURL}/update/${workoutid}`, body)
+        .put(`${baseURL}/update`, body)
         .then( res => res)
         .catch( err => {throw err})
 }

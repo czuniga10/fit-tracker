@@ -20,7 +20,6 @@ class ProjectItem extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            newExercise: '',
             modalIsOpen: false
         }
         this.openModal = this.openModal.bind(this);
