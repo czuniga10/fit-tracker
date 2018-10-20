@@ -56,26 +56,26 @@ class ProjectItem extends Component {
                 </div> 
         </Link>
 
-                        <div>
-                            <button onClick={this.openModal}>Edit</button>
-                            <Modal
-                            isOpen={this.state.modalIsOpen}
-                            onAfterOpen={this.afterOpenModal}
-                            onRequestClose={this.closeModal}
-                            style={customStyles}
-                            contentLabel="Example Modal"
-                            >
+            <div>
+                <button onClick={this.openModal}>Edit</button>
+                <Modal
+                isOpen={this.state.modalIsOpen}
+                onAfterOpen={this.afterOpenModal}
+                onRequestClose={this.closeModal}
+                style={customStyles}
+                contentLabel="Example Modal"
+                >
 
-                            <h2 ref={subtitle => this.subtitle = subtitle}>Edit Exercise</h2>
-                            <button onClick={this.closeModal}>X</button>
-                            <div>edit project here</div>
-                            <form>
-                                <input className='update-project' value={nameValue} type="text" name={`name${index}`} onChange={ e => {handleInputChange(e) }}/>
-                                <input className='update-project' value={detailsValue} type="text" name={`details${index}`} onChange={ e => {handleInputChange(e) }}/>
-                                <button onClick={() => handleSaveChange(index)}>save Project</button>
-                            </form>
-                            </Modal>
-                        </div>
+                <h2 ref={subtitle => this.subtitle = subtitle}>Edit Exercise</h2>
+                <button onClick={this.closeModal}>X</button>
+                <div>edit project here</div>
+                <form>
+                    <input className='update-project' value={nameValue} type="text" name={`name${index}`} onChange={ e => {handleInputChange(e) }}/>
+                    <input className='update-project' value={detailsValue} type="text" name={`details${index}`} onChange={ e => {handleInputChange(e) }}/>
+                    <button onClick={() => handleSaveChange(index)}>save Project</button>
+                </form>
+                </Modal>
+            </div>
         </div>
     
         )

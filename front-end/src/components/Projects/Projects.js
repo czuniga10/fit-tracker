@@ -75,6 +75,7 @@ class Projects extends Component {
             if (res.status !== 200) {
                 alert(res);
             } else{
+                //redirect to workout
                 this.refresh(id);
             }
         })
