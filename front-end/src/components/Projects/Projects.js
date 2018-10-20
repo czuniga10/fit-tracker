@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import './Projects.css'
+import './Project.css'
 
 import { getAllProjects, updateProject, createProject } from '../../services/project.services';
 import { updateUser } from '../../actions/actionCreators';
@@ -107,22 +107,21 @@ class Projects extends Component {
                 handleSaveChange={this.handleSaveChange}
                 />)
         })
-        
-        return(
-            <div className="proj-wrapper">
-                <div className="proj-title">
-                    Projects
-                </div>
-                    {displayProjectItems}
+    return(
+        <div className="proj-wrapper">
+            <div className="proj-title">
+                Projects
+            </div>
+            <div className='display-proj-items'>
+                {displayProjectItems}
                 <div className="add-proj">
-                    <input className='name' value={this.state.name} type="text" name="name" onChange={ e => {this.handleInputChange(e) }}/>
-                    <input className='details' value={this.state.details} type="text" name="details" onChange={ e => {this.handleInputChange(e) }}/>
+                    <input className='add-name'placeholder="Name" value={this.state.name} type="text" name="name" onChange={ e => {this.handleInputChange(e) }}/>
+                    <input className='add-details' placeholder="Description" value={this.state.details} type="text" name="details" onChange={ e => {this.handleInputChange(e) }}/>
                     <button onClick={ e => { this.handleProjectSubmit(e) } }> +addProject </button>
                 </div>
-            </div> 
-        
-        
-           )
+            </div>
+        </div>
+        )        
     }
 }
 function mapStateToProps(state){

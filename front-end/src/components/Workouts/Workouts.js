@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-// import './Projects.css'
+import './Workout.css';
 
 import { getAllWorkouts, createWorkout, updateWorkout } from '../../services/workout.services';
 import { updateUser } from '../../actions/actionCreators';

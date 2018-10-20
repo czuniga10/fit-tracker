@@ -40,9 +40,9 @@ class WorkoutItem extends Component {
     render() {
         const {id, index, name, date, time, nameValue, dateValue, timeValue, handleSaveChange, handleInputChange} = this.props;
         return(
-        <div>
+        <div className="worout-item-wrapper">
             <Link to={`/exercise/${id}`} className='proj-holder-link'>
-                <div className="proj-holder">
+                <div className="workout-item-holder">
                     <div className="name">
                         {name}
                     </div>
