@@ -64,6 +64,11 @@ class Workouts extends Component {
             
             } )
        .catch(err => {throw err})
+       this.setState({
+          name: '',
+          date: '',
+          time: ''
+       })
     }
 
     handleSaveChange(index) {

@@ -58,6 +58,9 @@ class Exercises extends Component {
                 }
             })
             .catch(err => {throw err})
+        this.setState({
+            exercise: ''
+        })
     }
     //edit
     handleSaveChange(index) {

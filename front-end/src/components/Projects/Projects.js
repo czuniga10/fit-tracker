@@ -61,6 +61,10 @@ class Projects extends Component {
             
             } )
        .catch(err => {throw err})
+    this.setState({
+        name: '',
+        details: ''
+    })
     }
 
    //edits
@@ -80,6 +84,9 @@ class Projects extends Component {
             }
         })
         .catch(err => {throw err});
+    this.setState({
+        [`project${index}`]: ''
+    })
 }
 
     render() {
