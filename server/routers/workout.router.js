@@ -22,10 +22,9 @@ workoutRouter.post('/create', (req, res) => {
 });
 
 //works
-workoutRouter.put('/update/:id', (req, res) => {
-    const id = req.params.id;
+workoutRouter.put('/update', (req, res) => {
     const db = getDb();
-    const { name, date, time } = req.body;
+    const { id, name, date, time } = req.body;
     db.UPDATE.update_workout([ id, name, date, time ])
         .then( promise => res.status(200).send(promise))
         .catch( err => res.status(500).send(err) )

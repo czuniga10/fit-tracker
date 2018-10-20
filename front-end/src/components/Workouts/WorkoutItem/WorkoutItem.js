@@ -40,8 +40,8 @@ class WorkoutItem extends Component {
     render() {
         const {id, index, name, date, time, nameValue, dateValue, timeValue, handleSaveChange, handleInputChange} = this.props;
         return(
-        <Link to={`/exercise/${id}`} className='proj-holder-link'>
-            
+        <div>
+            <Link to={`/exercise/${id}`} className='proj-holder-link'>
                 <div className="proj-holder">
                     <div className="name">
                         {name}
@@ -53,7 +53,29 @@ class WorkoutItem extends Component {
                         {time}
                     </div>
                 </div> 
-        </Link>
+            </Link>
+            <div>
+                <button onClick={this.openModal}>Edit</button>
+                    <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                    >
+
+                    <h2 ref={subtitle => this.subtitle = subtitle}>Edit Exercise</h2>
+                    <button onClick={this.closeModal}>X</button>
+                    <div>edit exercise here</div>
+                    <form>
+                        <input className='update-workout' value={nameValue} type="text" name={`name${index}`} onChange={ e => {handleInputChange(e) }}/>
+                        <input className='update-workout' value={dateValue} type="text" name={`date${index}`} onChange={ e => {handleInputChange(e) }}/>
+                        <input className='update-workout' value={timeValue} type="text" name={`time${index}`} onChange={ e => {handleInputChange(e) }}/>
+                        <button onClick={() => handleSaveChange(index)}>save exercise</button>
+                    </form>
+                    </Modal>
+            </div>
+        </div>
         )
     }
 }

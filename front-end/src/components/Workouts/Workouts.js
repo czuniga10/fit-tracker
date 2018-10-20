@@ -25,7 +25,7 @@ class Workouts extends Component {
     }
     componentDidMount() {
         let project_id = this.props.match.params.id;
-        this.refresh(project_id)
+        this.refresh(project_id);
     }
 
     refresh(project_id){
@@ -35,7 +35,7 @@ class Workouts extends Component {
                     console.log(res);
                 }
                 else{
-                    this.setState({ projects: res.data });
+                    this.setState({ workouts: res.data });
                 }
             })
     }
