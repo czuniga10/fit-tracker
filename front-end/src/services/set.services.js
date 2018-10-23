@@ -25,7 +25,7 @@ function createSet(body){
 
 function updateSet(setid, body){
     return axios
-        .put(`${baseURL}/update/${setid}`, body)
+        .delete(`${baseURL}/update/${setid}`, body)
         .then( res => res)
         .catch( err => {throw err})
 }

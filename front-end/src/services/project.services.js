@@ -32,7 +32,7 @@ function updateProject(body){
 
 function deleteProject(userid){
     return axios
-        .post(`${baseURL}/delete/${userid}`)
+        .delete(`${baseURL}/delete/${userid}`)
         .then( res => res)
         .catch( err => {throw err})
 }

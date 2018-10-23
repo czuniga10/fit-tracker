@@ -32,7 +32,7 @@ function updateExercise(body){
 
 function deleteExercise(exerciseid){
     return axios
-        .post(`${baseURL}/delete/${exerciseid}`)
+        .delete(`${baseURL}/delete/${exerciseid}`)
         .then( res => res)
         .catch( err => {throw err})
 }
