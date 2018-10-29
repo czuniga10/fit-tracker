@@ -31,10 +31,10 @@ setRouter.put('/update/:id', (req, res) => {
         .catch( err => res.status(500).send(err) )
 });
 //works
-setRouter.delete('/delete/:id', (req, res) => {
-    const id = req.params.id;
+setRouter.delete('/delete', (req, res) => {
+    const {id} = req.body;
     const db = getDb();
-    db.DELETE.delete_set(id)
+    db.DELETE.delete_set([id])
         .then ( () => res.status(200).send() )
         .catch( err => res.status(500).send(err) )
 });

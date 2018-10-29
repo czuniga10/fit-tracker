@@ -30,12 +30,12 @@ exerciseRouter.put('/update', (req, res) => {
         .catch( err => res.status(500).send(err) )
 });
 //test doesnt work
-// exerciseRouter.delete('/delete/:id', (req, res) => {
-//     const id = req.params.id;
-//     const db = getDb();
-//     db.DELETE.delete_exercise(id)
-//         .then ( () => res.status(200).send() )
-//         .catch( err => res.status(500).send(err) )
-// });
+exerciseRouter.delete('/delete', (req, res) => {
+    const {id} = req.body;
+    const db = getDb();
+    db.DELETE.delete_exercise([id])
+        .then ( () => res.status(200).send() )
+        .catch( err => res.status(500).send(err) )
+});
 
 module.exports = exerciseRouter;
