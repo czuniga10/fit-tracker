@@ -115,17 +115,17 @@ class Workouts extends Component {
                 <div className="workout-title">
                     Workouts
                 </div>
+                <div className="display-workout-items">
                     {displayWorkoutItems}
-                <div className="add-workout">
-                    <input className='name' value={this.state.name} type="text" name="name" onChange={ e => {this.handleInputChange(e) }}/>
-                    <input className='date' value={this.state.date} type="text" name="date" onChange={ e => {this.handleInputChange(e) }}/>
-                    <input className='time' value={this.state.time} type="text" name="time" onChange={ e => {this.handleInputChange(e) }}/>
-                    <button onClick={ e => { this.handleWorkoutSubmit(e) } }> +addWorkout </button>
+                    <div className="add-workout">
+                        <input className='add-name' placeholder="Name" value={this.state.name} type="text" name="name" onChange={ e => {this.handleInputChange(e) }}/>
+                        <input className='add-date' placeholder="Date" value={this.state.date} type="text" name="date" onChange={ e => {this.handleInputChange(e) }}/>
+                        <input className='add-time' placeholder="Time" value={this.state.time} type="text" name="time" onChange={ e => {this.handleInputChange(e) }}/>
+                        <button onClick={ e => { this.handleWorkoutSubmit(e) } }> +addWorkout </button>
+                    </div>
                 </div>
             </div> 
-        
-        
-           )
+        )
     }
 }
 function mapStateToProps(state){

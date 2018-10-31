@@ -32,6 +32,7 @@ workoutRouter.put('/update', (req, res) => {
 //test doesn't work
 workoutRouter.delete('/delete', (req, res) => {
     const {id} = req.body;
+    const workout_id = id;
     const db = getDb();
     db.DELETE.delete_workout([id])
         .then ( () => res.status(200).send() )
