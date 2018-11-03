@@ -15,8 +15,8 @@ setRouter.get('/:exerciseId', (req,res) => {
 //works
 setRouter.post('/create', (req, res) => {
     const db = getDb();
-    const { exercise_id, type, reps, weight, is_completed } = req.body;
-    db.CREATE.create_set([ exercise_id, type, reps, weight, is_completed ])
+    const { exercise_id, workout_id, project_id, type, reps, weight, is_completed } = req.body;
+    db.CREATE.create_set([ exercise_id, workout_id, project_id, type, reps, weight, is_completed ])
         .then( (promise) => res.status(200).send(promise) )
         .catch( err => res.status(500).send(err) )
 });

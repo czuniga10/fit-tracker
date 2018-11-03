@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import './Projects.css'
 
 import { getAllSets, createSet } from '../../services/set.services';
-import { updateUser } from '../../actions/actionCreators';
+import { updateUser, getWorkout, getProject } from '../../actions/actionCreators';
 
 import SetItem from './SetItem/SetItem';
 
@@ -45,11 +45,13 @@ class Sets extends Component {
 
     handleSetSubmit() {
         let exercise_id = this.props.match.params.id;
+        let workout_id = this.props.workoutInfo.id;
+        let project_id = this.props.projectInfo.id;
         const type = this.state.type;
         const reps = this.state.reps;
         const weight = this.state.weight;
         const is_completed = this.state.is_completed;
-        const body = {exercise_id, type, reps, weight, is_completed}
+        const body = {exercise_id, workout_id, project_id, type, reps, weight, is_completed}
         createSet(body)
             .then( res => {
                 if (res.status !== 200) {
@@ -112,4 +114,4 @@ function mapStateToProps(state){
     return state;
   }
   
-  export default connect( mapStateToProps, {updateUser} ) (Sets) ;
+  export default connect( mapStateToProps, {updateUser, getWorkout, getProject} ) (Sets) ;
