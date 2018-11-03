@@ -15,8 +15,8 @@ exerciseRouter.get('/:workoutId', (req,res) => {
 //works
 exerciseRouter.post('/create', (req, res) => {
     const db = getDb();
-    const { workout_id, exercise } = req.body;
-    db.CREATE.create_exercise([ workout_id, exercise ])
+    const { workout_id, project_id, exercise } = req.body;
+    db.CREATE.create_exercise([ workout_id, project_id, exercise ])
         .then( (promise) => res.status(200).send(promise) )
         .catch( err => res.status(500).send(err) )
 });

@@ -47,8 +47,9 @@ class Exercises extends Component {
     //create
     handleCreateExercise() {
         let workout_id = this.props.match.params.id;
+        let project_id = this.props.projectInfo.id;
         const exercise = this.state.exercise;
-        const body = {workout_id, exercise}
+        const body = {workout_id, project_id, exercise}
         createExercise(body)
             .then( res => {
                 if (res.status !== 200) {
