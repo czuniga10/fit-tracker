@@ -40,10 +40,10 @@ class ProjectItem extends Component {
     }
 
     render() {
-        const {id, index, name, details, nameValue, detailsValue, handleInputChange, handleSaveChange} = this.props;
+        const {id, index, name, details, nameValue, detailsValue, handleInputChange, handleSaveChange, reduxUpdate} = this.props;
         return(
         <div className='proj-item-wrap'>
-            <Link to={`/workout/${id}`} className='proj-holder-link'>
+            <Link to={`/workout/${id}`} onClick={() => reduxUpdate(index)} className='proj-holder-link'>
 
                     <div>
                         <div className="name">

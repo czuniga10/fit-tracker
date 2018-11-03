@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './Workout.css';
 
 import { getAllWorkouts, createWorkout, updateWorkout } from '../../services/workout.services';
-import { updateUser } from '../../actions/actionCreators';
+import { updateUser, getWorkout } from '../../actions/actionCreators';
 
 import WorkoutItem from './WorkoutItem/WorkoutItem';
 
@@ -21,6 +21,7 @@ class Workouts extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSaveChange = this.handleSaveChange.bind(this);
         this.handleWorkoutSubmit = this.handleWorkoutSubmit.bind(this);
+        this.reduxUpdate = this.reduxUpdate.bind(this);
 
     }
     componentDidMount() {
@@ -87,7 +88,9 @@ class Workouts extends Component {
                 }
             })
             .catch(err => {throw err});
-
+    }
+    reduxUpdate(index){
+        this.props.getWorkout(this.state.workouts[index]);
     }
 
     render() {
@@ -107,6 +110,7 @@ class Workouts extends Component {
                 timeValue={this.state[`time${index}`]} 
                 handleInputChange={this.handleInputChange}
                 handleSaveChange={this.handleSaveChange}
+                reduxUpdate={this.reduxUpdate}
                 />)
         })
         
@@ -132,4 +136,4 @@ function mapStateToProps(state){
     return state;
   }
   
-  export default connect( mapStateToProps ) (Workouts)
+  export default connect( mapStateToProps, {updateUser, getWorkout}) (Workouts)

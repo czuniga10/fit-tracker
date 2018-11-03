@@ -22,12 +22,12 @@ export function updateUser(user){
     }
 }
 
-export function updateProject(project){
-    return {
-        type: UPDATE_PROJECT,
-        payload: project
-    }
-}
+// export function updateProject(project){
+//     return {
+//         type: UPDATE_PROJECT,
+//         payload: project
+//     }
+// }
 
 // export function updateLift(lift){
 //     return {
@@ -39,27 +39,27 @@ export function updateProject(project){
 export function getProject(project){
     return {
         type: GET_PROJECT,
-        payload: 
+        payload: project
     }
 }
 
 export function getWorkout(workout){
     return {
         type: GET_WORKOUT,
-        payload: 
+        payload: workout
     }
 }
 
 export function getExercise(exercise){
     return {
         type: GET_EXERCISE,
-        payload: 
+        payload: exercise
     }
 }
 
 export function getSet(set){
     return {
         type: GET_SET,
-        payload: 
+        payload: set
     }
 }

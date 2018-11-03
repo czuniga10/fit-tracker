@@ -1,5 +1,5 @@
 DELETE FROM set
-WHERE exercise_id = $1
+WHERE workout_id = $1
 ;
 
 DELETE FROM exercise

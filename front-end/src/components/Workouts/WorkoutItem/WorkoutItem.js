@@ -38,10 +38,10 @@ class WorkoutItem extends Component {
         this.setState({modalIsOpen: false});
     }
     render() {
-        const {id, index, name, date, time, nameValue, dateValue, timeValue, handleSaveChange, handleInputChange} = this.props;
+        const {id, index, name, date, time, nameValue, dateValue, timeValue, handleSaveChange, handleInputChange, reduxUpdate} = this.props;
         return(
         <div className="workout-item-wrapper">
-            <Link to={`/exercise/${id}`} className='workout-holder-link'>
+            <Link to={`/exercise/${id}`} onClick={() => reduxUpdate(index)} className='workout-holder-link'>
                 <div>
                     <div className="name">
                         {name}

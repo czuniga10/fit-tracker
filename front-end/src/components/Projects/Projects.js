@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './Project.css'
 
 import { getAllProjects, updateProject, createProject } from '../../services/project.services';
-import { updateUser } from '../../actions/actionCreators';
+import { updateUser, getProject } from '../../actions/actionCreators';
 
 import ProjectItem from './ProjectItem/ProjectItem';
 
@@ -19,6 +19,7 @@ class Projects extends Component {
         this.handleProjectSubmit = this.handleProjectSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSaveChange = this.handleSaveChange.bind(this);
+        this.reduxUpdate = this.reduxUpdate.bind(this);
 
     }
     componentDidMount() {
@@ -87,7 +88,17 @@ class Projects extends Component {
     this.setState({
         [`project${index}`]: ''
     })
-}
+    }
+
+    handleDelete(){
+        let id 
+
+    }
+
+    //updates redux store with the current project with an onClick event
+    reduxUpdate(index){
+        this.props.getProject(this.state.projects[index]);
+    }
 
     render() {
 
@@ -105,6 +116,7 @@ class Projects extends Component {
                 detailsValue={this.state[`details${index}`]}
                 handleInputChange={this.handleInputChange}
                 handleSaveChange={this.handleSaveChange}
+                reduxUpdate={this.reduxUpdate}
                 />)
         })
     return(
@@ -128,4 +140,4 @@ function mapStateToProps(state){
     return state;
   }
   
-  export default connect( mapStateToProps, {updateUser} ) (Projects) ;
+  export default connect( mapStateToProps, {updateUser, getProject} ) (Projects) ;

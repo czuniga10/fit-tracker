@@ -2,7 +2,7 @@ import { GET_WORKOUT } from '../actions/actionCreators';
 
 let workoutState = {};
 
-function workoutInfo( state = wokroutState, action ){
+function workoutInfo( state = workoutState, action ){
     switch( action.type ) {
         case GET_WORKOUT:
             return Object.assign( action.payload );

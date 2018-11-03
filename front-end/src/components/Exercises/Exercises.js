@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 
 import { getAllExercises, createExercise, updateExercise } from '../../services/exercise.services';
-import { updateUser } from '../../actions/actionCreators';
+import { updateUser, getProject } from '../../actions/actionCreators';
 
 import ExerciseItem from './ExerciseItem/ExerciseItem';
 
@@ -84,6 +84,7 @@ class Exercises extends Component {
         })
     }
 
+
     render() {
         const exercises = this.state.exercises;
         const displayExerciseItems = exercises.map(ex => {
@@ -120,4 +121,4 @@ function mapStateToProps(state){
     return state;
   }
   
-  export default connect( mapStateToProps, {updateUser} ) (Exercises)
+  export default connect( mapStateToProps, {updateUser, getProject} ) (Exercises)
