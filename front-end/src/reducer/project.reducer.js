@@ -4,7 +4,7 @@ let projectState = {};
 
 function projectInfo( state = projectState, action ){
     switch( action.type ) {
-        case UPDATE_PROJECT:
+        case GET_PROJECT:
             return Object.assign( action.payload );
 
         default:
